@@ -13,12 +13,14 @@ while respuesta.upper() != "N":
             except:
                 print ("ERROR, como limite de registros solo puede ingresar un numero entero positivo")
 
-        nombreDepartamento = input ("Ingrese el departamento al que corresponden los registros: ")
-        try:
-            dataFrame = API.consultar (nombreDepartamento.upper(), limiteRegistros)
-            UI.printDataFrame(dataFrame)
-        except:
-            print ("ERROR, el departamento ingresado no existe o fue mal digitado (no debe tener tildes ni otros caracteres especiales)")
+        while (True):
+            nombreDepartamento = input ("Ingrese el departamento al que corresponden los registros: ")
+            try:
+                dataFrame = API.consultar (nombreDepartamento.upper(), limiteRegistros)
+                UI.printDataFrame(dataFrame)
+                break
+            except:
+                print ("ERROR, el departamento ingresado no existe o fue mal digitado (no debe tener tildes ni otros caracteres especiales)")
     else:
         print ("Respuesta invalida")
     respuesta = input ("Desea hacer otra consulta? (S/N) ")
